@@ -1,9 +1,27 @@
 import Image from "next/image";
+import Link from "next/link";
 
 export default function Home() {
   return (
     <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
+      {/* Navigation */}
+      <nav className="fixed top-4 right-4 z-10">
+        <Link 
+          href="/about"
+          className="bg-[#660033] text-white px-6 py-2 rounded-full font-medium hover:bg-[#800040] transition-colors duration-300 shadow-lg"
+        >
+          About Us
+        </Link>
+      </nav>
+      
       <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
+        <div className="text-center mb-8">
+          <h1 className="text-4xl md:text-6xl font-bold text-[#660033] mb-4">
+            YallaOuting
+          </h1>
+          <p className="text-xl text-gray-600">Your Ultimate Group Hangout Manager</p>
+        </div>
+        
         <Image
           className="dark:invert"
           src="/next.svg"
