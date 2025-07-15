@@ -1,0 +1,6 @@
+@YallaOuting_HostAddress = http://localhost:5266
+
+GET {{YallaOuting_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
