@@ -1,5 +1,6 @@
 ﻿using Domain.Entities.Lookups;
 using Domain.Entities.User;
+using Domain.Entities;
 
 using Infrastructure.Data.Configurations.LookupConf;
 
@@ -17,6 +18,12 @@ namespace Infrastructure.Data
             : base(options)
         {
         }
+
+        // Add DbSets for the new entities
+        public DbSet<YallaOutingUser> YallaOutingUsers { get; set; }
+        public DbSet<Hangout> Hangouts { get; set; }
+        public DbSet<HangoutParticipant> HangoutParticipants { get; set; }
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.ApplyConfigurationsFromAssembly(typeof(ApplicationDbContext).Assembly);
@@ -30,10 +37,54 @@ namespace Infrastructure.Data
             modelBuilder.ApplyConfiguration(new GovernorateConfiguration());
             modelBuilder.ApplyConfiguration(new LookupConfiguration());
 
+            // Configure YallaOutingUser entity
+            modelBuilder.Entity<YallaOutingUser>(entity =>
+            {
+                entity.HasKey(e => e.Id);
+                entity.Property(e => e.Username).IsRequired().HasMaxLength(50);
+                entity.Property(e => e.Email).IsRequired().HasMaxLength(100);
+                entity.Property(e => e.FirstName).IsRequired().HasMaxLength(50);
+                entity.Property(e => e.LastName).IsRequired().HasMaxLength(50);
+                entity.Property(e => e.PasswordHash).IsRequired();
+                entity.Property(e => e.PhoneNumber).IsRequired().HasMaxLength(15);
+                entity.Property(e => e.Role).IsRequired().HasMaxLength(20);
+                
+                entity.HasIndex(e => e.Username).IsUnique();
+                entity.HasIndex(e => e.Email).IsUnique();
+                entity.HasIndex(e => e.PhoneNumber).IsUnique();
+            });
 
+            // Configure Hangout entity
+            modelBuilder.Entity<Hangout>(entity =>
+            {
+                entity.HasKey(e => e.Id);
+                entity.Property(e => e.Title).IsRequired().HasMaxLength(100);
+                entity.Property(e => e.Description).HasMaxLength(500);
+                entity.Property(e => e.Location).IsRequired().HasMaxLength(200);
+                
+                entity.HasOne(e => e.CreatedBy)
+                      .WithMany(u => u.CreatedHangouts)
+                      .HasForeignKey(e => e.CreatedByUserId)
+                      .OnDelete(DeleteBehavior.Restrict);
+            });
 
-
-
+            // Configure HangoutParticipant entity
+            modelBuilder.Entity<HangoutParticipant>(entity =>
+            {
+                entity.HasKey(e => e.Id);
+                
+                entity.HasOne(e => e.Hangout)
+                      .WithMany(h => h.Participants)
+                      .HasForeignKey(e => e.HangoutId)
+                      .OnDelete(DeleteBehavior.Cascade);
+                      
+                entity.HasOne(e => e.User)
+                      .WithMany(u => u.HangoutParticipations)
+                      .HasForeignKey(e => e.UserId)
+                      .OnDelete(DeleteBehavior.Cascade);
+                      
+                entity.HasIndex(e => new { e.HangoutId, e.UserId }).IsUnique();
+            });
 
             base.OnModelCreating(modelBuilder);
         }

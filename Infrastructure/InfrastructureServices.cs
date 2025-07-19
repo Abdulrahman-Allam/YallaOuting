@@ -1,8 +1,10 @@
-﻿using Domain.Interfaces.SPCallInterfaces;
+﻿using Domain.Interfaces.RepositoryInterfaces;
+using Domain.Interfaces.SPCallInterfaces;
 using Domain.Interfaces.UnitOfWorkInterfaces;
 using Domain.Interfaces.UtilityInterfaces.FileHandlerInterfaces;
 using Domain.Interfaces.UtilityInterfaces.MimeTypesInterfaces;
 using Infrastructure.Data;
+using Infrastructure.Repository.UserRepository;
 using Infrastructure.StoredProcedureCall;
 using Infrastructure.UnitOfWorkImplementation;
 using Infrastructure.Utility.Authentication;
@@ -33,6 +35,9 @@ public static class InfrastructureServices
         // Register unit of work and stored procedure handler
         services.AddScoped<IUnitOfWork, UnitOfWork>();
         services.AddScoped<ISPCall, SPCall>();
+
+        // Register repositories
+        services.AddScoped<IYallaOutingUserRepository, YallaOutingUserRepository>();
 
         // Register file mime type services
         services.AddSingleton<IMimeTypesLoader>(new FileMimeTypesLoader("MimeTypes.json"));

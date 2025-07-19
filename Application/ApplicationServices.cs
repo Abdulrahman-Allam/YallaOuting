@@ -2,10 +2,12 @@
 using Application.Contracts;
 using Application.Contracts.Authentication;
 using Application.Contracts.Lookups;
+using Application.Contracts.YallaOutingUser;
 using Application.Factories;
 using Application.Services;
 using Application.Services.Authentication;
 using Application.Services.Lookups;
+using Application.Services.YallaOutingUser;
 using Application.Strategies.UserStrategies.CreateNewUserStrategy;
 using Domain.Interfaces.CommonInterfaces;
 using Domain.Interfaces.CommonInterfaces.OperationResultFactoryInterfaces;
@@ -39,9 +41,8 @@ namespace Application
 
             services.AddScoped<IAuthenticationService, AuthentictionService>();
 
-
-
-
+            // Register YallaOutingUser services
+            services.AddScoped<IYallaOutingUserService, YallaOutingUserService>();
 
             // Register strategies as scoped services
             services.AddScoped<ICreateNewUserStrategy, CreateNewAdminStrategy>();
