@@ -3,9 +3,11 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useTheme } from "./contexts/ThemeContext";
+import { useUser } from "./contexts/UserContext";
 
 export default function Home() {
   const { theme, currentTheme } = useTheme();
+  const { user, isAuthenticated, logout } = useUser();
 
   return (
     <div className={`min-h-screen flex items-center justify-center p-8 relative overflow-hidden theme-${currentTheme}`}>
@@ -21,6 +23,53 @@ export default function Home() {
       <div className="yalla-gradient absolute inset-0"></div>
       
       <main className="relative z-10 text-center max-w-4xl mx-auto">
+        {/* Welcome Message for Logged In Users */}
+        {isAuthenticated && user && (
+          <div 
+            className="mb-8 p-6 rounded-2xl backdrop-blur-sm border-2"
+            style={{
+              backgroundColor: `${theme.colors.primary}20`,
+              borderColor: `${theme.colors.primary}60`,
+              boxShadow: `0 8px 32px ${theme.colors.primary}30`,
+            }}
+          >
+            <h2 
+              className="text-2xl md:text-3xl font-bold mb-2"
+              style={{ color: theme.colors.text }}
+            >
+              Welcome back, {user.firstName || user.username}! 🎉
+            </h2>
+            <p 
+              className="text-lg"
+              style={{ color: theme.colors.textSecondary }}
+            >
+              Ready to plan your next amazing outing?
+            </p>
+            <div className="mt-4 flex flex-col sm:flex-row gap-4 justify-center">
+              <button
+                className={`px-6 py-3 rounded-lg font-semibold text-white transition-all duration-300 transform hover:scale-105`}
+                style={{
+                  background: `linear-gradient(135deg, ${theme.colors.primary}, ${theme.colors.secondary})`,
+                  boxShadow: `0 4px 15px ${theme.colors.primary}40`,
+                }}
+              >
+                Plan New Outing
+              </button>
+              <button
+                onClick={logout}
+                className="px-6 py-3 rounded-lg font-semibold border-2 transition-all duration-300 transform hover:scale-105"
+                style={{
+                  borderColor: `${theme.colors.text}40`,
+                  color: theme.colors.text,
+                  backgroundColor: 'transparent',
+                }}
+              >
+                Logout
+              </button>
+            </div>
+          </div>
+        )}
+
         <div className="mb-12">
           <h1 
             className="text-6xl md:text-8xl font-bold mb-8 animate-fade-in"
@@ -43,33 +92,47 @@ export default function Home() {
           </p>
         </div>
         
-        <div className="flex flex-col sm:flex-row gap-6 justify-center mb-16 animate-fade-in-up">
+        {/* Show login/signup buttons only if not authenticated */}
+        {!isAuthenticated && (
+          <div className="flex flex-col sm:flex-row gap-6 justify-center mb-16 animate-fade-in-up">
+            <Link
+              href="/signup"
+              className={`group relative bg-gradient-to-r ${theme.gradients.button} text-white px-12 py-4 rounded-full font-bold text-lg shadow-xl transform hover:scale-105 transition-all duration-300 overflow-hidden`}
+            >
+              <span className="relative z-10">Get Started</span>
+              <div 
+                className={`absolute inset-0 bg-gradient-to-r ${theme.gradients.card} opacity-0 group-hover:opacity-100 transition-opacity duration-300`}
+              ></div>
+            </Link>
+            <Link
+              href="/login"
+              className="group border-2 px-12 py-4 rounded-full font-bold text-lg transition-all duration-300 transform hover:scale-105"
+              style={{
+                borderColor: `${theme.colors.text}50`,
+                color: theme.colors.text,
+              }}
+              onMouseEnter={(e) => {
+                e.target.style.backgroundColor = `${theme.colors.primary}20`;
+                e.target.style.borderColor = `${theme.colors.text}80`;
+              }}
+              onMouseLeave={(e) => {
+                e.target.style.backgroundColor = 'transparent';
+                e.target.style.borderColor = `${theme.colors.text}50`;
+              }}
+            >
+              Login
+            </Link>
+          </div>
+        )}
+        
+        <div className="flex flex-col sm:flex-row gap-4 justify-center mb-8 animate-fade-in-up">
           <Link
             href="/about"
-            className={`group relative bg-gradient-to-r ${theme.gradients.button} text-white px-12 py-4 rounded-full font-bold text-lg shadow-xl transform hover:scale-105 transition-all duration-300 overflow-hidden`}
+            className="text-sm hover:underline transition-colors duration-300"
+            style={{ color: theme.colors.textSecondary }}
           >
-            <span className="relative z-10">Learn About Us</span>
-            <div 
-              className={`absolute inset-0 bg-gradient-to-r ${theme.gradients.card} opacity-0 group-hover:opacity-100 transition-opacity duration-300`}
-            ></div>
+            Learn About Us
           </Link>
-          <button 
-            className="group border-2 px-12 py-4 rounded-full font-bold text-lg transition-all duration-300 transform hover:scale-105"
-            style={{
-              borderColor: `${theme.colors.text}50`,
-              color: theme.colors.text,
-            }}
-            onMouseEnter={(e) => {
-              e.target.style.backgroundColor = `${theme.colors.primary}20`;
-              e.target.style.borderColor = `${theme.colors.text}80`;
-            }}
-            onMouseLeave={(e) => {
-              e.target.style.backgroundColor = 'transparent';
-              e.target.style.borderColor = `${theme.colors.text}50`;
-            }}
-          >
-            Get Started
-          </button>
         </div>
         
         <div className="grid md:grid-cols-3 gap-8 mt-16">
