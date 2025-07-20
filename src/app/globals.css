@@ -1,21 +1,18 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --background: #19171b;
+  --foreground: #ffffff;
+  --primary-red: #75020f;
+  --dark-red: #51080d;
+  --darkest-red: #2b0307;
+  --light-text: #ffffff;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --background: #19171b;
+    --foreground: #ffffff;
   }
 }
 
@@ -23,4 +20,978 @@ body {
   background: var(--background);
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Custom YallaOuting styles */
+.yalla-gradient {
+  background: linear-gradient(135deg, #19171b 0%, rgba(117, 2, 15, 0.1) 50%, rgba(117, 2, 15, 0.2) 100%);
+}
+
+.yalla-button {
+  background: var(--primary-red);
+  transition: all 0.3s ease;
+}
+
+.yalla-button:hover {
+  background: var(--dark-red);
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px rgba(117, 2, 15, 0.3);
+}
+
+/* Custom animations for YallaOuting with slower movements */
+@keyframes strong-gradient-x {
+  0%, 100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+@keyframes strong-gradient-xy {
+  0%, 100% {
+    background-position: 0% 0%;
+  }
+  25% {
+    background-position: 100% 0%;
+  }
+  50% {
+    background-position: 100% 100%;
+  }
+  75% {
+    background-position: 0% 100%;
+  }
+}
+
+@keyframes wave-gradient {
+  0%, 100% {
+    background-position: 0% 0%, 100% 100%;
+  }
+  25% {
+    background-position: 100% 0%, 0% 100%;
+  }
+  50% {
+    background-position: 100% 100%, 0% 0%;
+  }
+  75% {
+    background-position: 0% 100%, 100% 0%;
+  }
+}
+
+@keyframes slow-wave-gradient {
+  0%, 100% {
+    background-position: 0% 0%, 100% 100%;
+  }
+  25% {
+    background-position: 100% 0%, 0% 100%;
+  }
+  50% {
+    background-position: 100% 100%, 0% 0%;
+  }
+  75% {
+    background-position: 0% 100%, 100% 0%;
+  }
+}
+
+@keyframes slow-gradient-movement {
+  0% {
+    background-position: 0% 50%;
+    transform: scale(1);
+  }
+  25% {
+    background-position: 50% 25%;
+    transform: scale(1.02);
+  }
+  50% {
+    background-position: 100% 75%;
+    transform: scale(1);
+  }
+  75% {
+    background-position: 25% 100%;
+    transform: scale(1.02);
+  }
+  100% {
+    background-position: 0% 50%;
+    transform: scale(1);
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fade-in-up {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slide-up {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slide-in-left {
+  from {
+    opacity: 0;
+    transform: translateX(-50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slide-in-right {
+  from {
+    opacity: 0;
+    transform: translateX(50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes expand {
+  from {
+    width: 0;
+  }
+  to {
+    width: 8rem;
+  }
+}
+
+@keyframes bounce-slow {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+.animate-gradient-x {
+  animation: strong-gradient-x 8s ease-in-out infinite;
+}
+
+.animate-gradient-xy {
+  animation: strong-gradient-xy 12s ease-in-out infinite;
+}
+
+.animate-wave-gradient {
+  animation: wave-gradient 15s ease-in-out infinite;
+}
+
+.animate-shimmer {
+  animation: shimmer 5s ease-in-out infinite;
+}
+
+.animate-slow-gradient-x {
+  animation: slow-gradient-movement 12s ease-in-out infinite;
+}
+
+.animate-slow-wave-gradient {
+  animation: slow-wave-gradient 20s ease-in-out infinite;
+}
+
+/* Red theme gradient backgrounds with strong moving effects */
+.theme-gradient-header {
+  position: relative;
+  overflow: hidden;
+}
+
+.theme-red .theme-gradient-header {
+  background: linear-gradient(135deg, #19171b 0%, #75020f 100%);
+}
+
+.theme-purple .theme-gradient-header {
+  background: linear-gradient(135deg, #1e202c 0%, #60519b 100%);
+}
+
+.theme-pink .theme-gradient-header {
+  background: linear-gradient(135deg, #fdf2f8 0%, #ec4899 100%);
+}
+
+.theme-blue .theme-gradient-header {
+  background: linear-gradient(135deg, #f8fafc 0%, #3b82f6 100%);
+}
+
+.theme-gradient-header::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-size: 400% 400%;
+  animation: slow-gradient-movement 12s ease-in-out infinite;
+  z-index: 1;
+}
+
+.theme-red .theme-gradient-header::before {
+  background: linear-gradient(
+    45deg,
+    #19171b 0%,
+    #75020f 15%, 
+    #51080d 30%, 
+    #2b0307 45%,
+    #75020f 60%,
+    #19171b 75%,
+    #51080d 90%,
+    #19171b 100%
+  );
+}
+
+.theme-purple .theme-gradient-header::before {
+  background: linear-gradient(
+    45deg,
+    #1e202c 0%,
+    #60519b 15%, 
+    #31323e 30%, 
+    #bfc0d1 45%,
+    #60519b 60%,
+    #1e202c 75%,
+    #31323e 90%,
+    #1e202c 100%
+  );
+}
+
+.theme-pink .theme-gradient-header::before {
+  background: linear-gradient(
+    45deg,
+    #fdf2f8 0%,
+    #ec4899 15%,
+    #f9a8d4 30%,
+    #fce7f3 45%,
+    #fdf2f8 60%,
+    #ec4899 75%,
+    #f9a8d4 90%,
+    #fdf2f8 100%
+  );
+}
+
+.theme-blue .theme-gradient-header::before {
+  background: linear-gradient(
+    45deg,
+    #f8fafc 0%,
+    #3b82f6 15%,
+    #93c5fd 30%,
+    #dbeafe 45%,
+    #f8fafc 60%,
+    #3b82f6 75%,
+    #93c5fd 90%,
+    #f8fafc 100%
+  );
+}
+
+.theme-gradient-header::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-size: 300% 300%;
+  animation: slow-gradient-movement 8s ease-in-out infinite reverse;
+  z-index: 2;
+}
+
+.theme-red .theme-gradient-header::after {
+  background: radial-gradient(
+    circle at 20% 50%,
+    rgba(117, 2, 15, 0.4) 0%,
+    transparent 30%
+  ),
+  radial-gradient(
+    circle at 80% 20%,
+    rgba(43, 3, 7, 0.5) 0%,
+    transparent 40%
+  ),
+  radial-gradient(
+    circle at 40% 80%,
+    rgba(81, 8, 13, 0.3) 0%,
+    transparent 50%
+  );
+}
+
+.theme-purple .theme-gradient-header::after {
+  background: radial-gradient(
+    circle at 20% 50%,
+    rgba(96, 81, 155, 0.4) 0%,
+    transparent 30%
+  ),
+  radial-gradient(
+    circle at 80% 20%,
+    rgba(49, 50, 62, 0.5) 0%,
+    transparent 40%
+  ),
+  radial-gradient(
+    circle at 40% 80%,
+    rgba(191, 192, 209, 0.2) 0%,
+    transparent 50%
+  );
+}
+
+.theme-pink .theme-gradient-header::after {
+  background: linear-gradient(
+    135deg,
+    rgba(236, 72, 153, 0.6) 0%,
+    transparent 30%,
+    rgba(249, 168, 212, 0.4) 50%,
+    transparent 70%,
+    rgba(252, 231, 243, 0.5) 100%
+  );
+}
+
+.theme-blue .theme-gradient-header::after {
+  background: linear-gradient(
+    135deg,
+    rgba(59, 130, 246, 0.6) 0%,
+    transparent 30%,
+    rgba(147, 197, 253, 0.4) 50%,
+    transparent 70%,
+    rgba(219, 234, 254, 0.5) 100%
+  );
+}
+
+/* Ensure header content is above animations */
+.theme-gradient-header > * {
+  position: relative;
+  z-index: 10;
+}
+
+.theme-red .theme-gradient-header::after {
+  background: linear-gradient(
+    -45deg,
+    transparent 20%,
+    rgba(117, 2, 15, 0.4) 50%,
+    transparent 80%
+  );
+}
+
+.theme-purple .theme-gradient-header::after {
+  background: linear-gradient(
+    -45deg,
+    transparent 20%,
+    rgba(96, 81, 155, 0.4) 50%,
+    transparent 80%
+  );
+}
+
+.theme-pink .theme-gradient-header::after {
+  background: linear-gradient(
+    -45deg,
+    transparent 20%,
+    rgba(236, 72, 153, 0.4) 50%,
+    transparent 80%
+  );
+}
+
+.theme-blue .theme-gradient-header::after {
+  background: linear-gradient(
+    -45deg,
+    transparent 20%,
+    rgba(59, 130, 246, 0.4) 50%,
+    transparent 80%
+  );
+}
+
+.theme-gradient-complex {
+  position: relative;
+}
+
+.theme-red .theme-gradient-complex {
+  background: linear-gradient(135deg, #19171b 0%, #75020f 50%, #51080d 100%);
+}
+
+.theme-purple .theme-gradient-complex {
+  background: linear-gradient(135deg, #1e202c 0%, #60519b 50%, #31323e 100%);
+}
+
+.theme-pink .theme-gradient-complex {
+  background: linear-gradient(135deg, #fdf2f8 0%, #ec4899 50%, #f9a8d4 100%);
+}
+
+.theme-blue .theme-gradient-complex {
+  background: linear-gradient(135deg, #f8fafc 0%, #3b82f6 50%, #93c5fd 100%);
+}
+
+.theme-gradient-complex::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-size: 500% 500%, 400% 400%;
+  animation: slow-wave-gradient 20s ease-in-out infinite;
+}
+
+.theme-red .theme-gradient-complex::before {
+  background: 
+    linear-gradient(
+      45deg,
+      rgba(25, 23, 27, 1) 0%,
+      rgba(117, 2, 15, 0.4) 25%,
+      rgba(43, 3, 7, 0.9) 50%,
+      rgba(117, 2, 15, 0.4) 75%,
+      rgba(25, 23, 27, 1) 100%
+    ),
+    linear-gradient(
+      -45deg,
+      rgba(117, 2, 15, 0.8) 0%,
+      rgba(25, 23, 27, 0.3) 30%,
+      rgba(81, 8, 13, 0.7) 60%,
+      transparent 100%
+    );
+}
+
+.theme-purple .theme-gradient-complex::before {
+  background: 
+    linear-gradient(
+      45deg,
+      rgba(30, 32, 44, 1) 0%,
+      rgba(96, 81, 155, 0.4) 25%,
+      rgba(191, 192, 209, 0.9) 50%,
+      rgba(96, 81, 155, 0.4) 75%,
+      rgba(30, 32, 44, 1) 100%
+    ),
+    linear-gradient(
+      -45deg,
+      rgba(96, 81, 155, 0.8) 0%,
+      rgba(30, 32, 44, 0.3) 30%,
+      rgba(49, 50, 62, 0.7) 60%,
+      transparent 100%
+    );
+}
+
+.theme-pink .theme-gradient-complex::before {
+  background: 
+    linear-gradient(
+      45deg,
+      rgba(253, 242, 248, 1) 0%,
+      rgba(236, 72, 153, 0.4) 25%,
+      rgba(252, 231, 243, 0.9) 50%,
+      rgba(236, 72, 153, 0.4) 75%,
+      rgba(253, 242, 248, 1) 100%
+    ),
+    linear-gradient(
+      -45deg,
+      rgba(236, 72, 153, 0.8) 0%,
+      rgba(253, 242, 248, 0.3) 30%,
+      rgba(249, 168, 212, 0.7) 60%,
+      transparent 100%
+    );
+}
+
+.theme-blue .theme-gradient-complex::before {
+  background: 
+    linear-gradient(
+      45deg,
+      rgba(248, 250, 252, 1) 0%,
+      rgba(59, 130, 246, 0.4) 25%,
+      rgba(219, 234, 254, 0.9) 50%,
+      rgba(59, 130, 246, 0.4) 75%,
+      rgba(248, 250, 252, 1) 100%
+    ),
+    linear-gradient(
+      -45deg,
+      rgba(59, 130, 246, 0.8) 0%,
+      rgba(248, 250, 252, 0.3) 30%,
+      rgba(147, 197, 253, 0.7) 60%,
+      transparent 100%
+    );
+}
+
+.theme-gradient-complex::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.1),
+    transparent
+  );
+  animation: shimmer 8s ease-in-out infinite;
+}
+
+.animate-fade-in {
+  animation: fade-in 1s ease-out;
+}
+
+.animate-fade-in-up {
+  animation: fade-in-up 0.8s ease-out;
+}
+
+.animate-slide-up {
+  animation: slide-up 0.8s ease-out 0.2s both;
+}
+
+.animate-slide-in-left {
+  animation: slide-in-left 1s ease-out;
+}
+
+.animate-slide-in-right {
+  animation: slide-in-right 1s ease-out;
+}
+
+.animate-expand {
+  animation: expand 1.2s ease-out 0.5s both;
+}
+
+.animate-bounce-slow {
+  animation: bounce-slow 3s ease-in-out infinite;
+}
+
+/* Gradient text utilities */
+.bg-gradient-to-r {
+  background: linear-gradient(to right, var(--tw-gradient-stops));
+}
+
+.bg-clip-text {
+  background-clip: text;
+  -webkit-background-clip: text;
+}
+
+.text-transparent {
+  color: transparent;
+}
+
+/* Enhanced theme system with CSS custom properties */
+.theme-red {
+  --theme-bg: #19171b;
+  --theme-primary: #75020f;
+  --theme-secondary: #51080d;
+  --theme-accent: #2b0307;
+  --theme-text: #ffffff;
+}
+
+.theme-purple {
+  --theme-bg: #1e202c;
+  --theme-primary: #60519b;
+  --theme-secondary: #31323e;
+  --theme-accent: #bfc0d1;
+  --theme-text: #bfc0d1;
+}
+
+.theme-pink {
+  --theme-bg: #fdf2f8;
+  --theme-primary: #ec4899;
+  --theme-secondary: #f9a8d4;
+  --theme-accent: #fce7f3;
+  --theme-text: #000000;
+}
+
+.theme-blue {
+  --theme-bg: #f8fafc;
+  --theme-primary: #3b82f6;
+  --theme-secondary: #93c5fd;
+  --theme-accent: #dbeafe;
+  --theme-text: #000000;
+}
+
+/* Dynamic theme classes */
+.theme-button {
+  background: linear-gradient(135deg, var(--theme-primary), var(--theme-secondary));
+  color: var(--theme-text);
+  transition: all 0.3s ease;
+}
+
+.theme-button:hover {
+  background: linear-gradient(135deg, var(--theme-secondary), var(--theme-primary));
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px rgba(var(--theme-primary), 0.3);
+}
+
+.theme-card {
+  background: linear-gradient(135deg, var(--theme-secondary), var(--theme-primary));
+  border: 1px solid rgba(var(--theme-text), 0.2);
+  backdrop-filter: blur(10px);
+}
+
+.theme-text-primary {
+  color: var(--theme-primary);
+}
+
+.theme-text-secondary {
+  color: var(--theme-text);
+}
+
+.theme-bg-gradient {
+  background: linear-gradient(135deg, var(--theme-bg) 0%, var(--theme-primary) 100%);
+}
+
+/* Theme-aware main page gradients with enhanced animations */
+.yalla-gradient {
+  position: absolute;
+  inset: 0;
+  background-size: 400% 400%;
+  animation: slow-wave-gradient 18s ease-in-out infinite;
+}
+
+.theme-red .yalla-gradient {
+  background: linear-gradient(135deg, 
+    rgba(25, 23, 27, 0.9) 0%, 
+    rgba(117, 2, 15, 0.2) 25%, 
+    rgba(43, 3, 7, 0.4) 50%, 
+    rgba(117, 2, 15, 0.3) 75%, 
+    rgba(25, 23, 27, 0.9) 100%
+  );
+}
+
+.theme-purple .yalla-gradient {
+  background: linear-gradient(135deg, 
+    rgba(30, 32, 44, 0.9) 0%, 
+    rgba(96, 81, 155, 0.2) 25%, 
+    rgba(49, 50, 62, 0.4) 50%, 
+    rgba(96, 81, 155, 0.3) 75%, 
+    rgba(30, 32, 44, 0.9) 100%
+  );
+}
+
+.theme-pink .yalla-gradient {
+  background: linear-gradient(135deg, 
+    rgba(253, 242, 248, 0.9) 0%, 
+    rgba(236, 72, 153, 0.2) 25%, 
+    rgba(249, 168, 212, 0.4) 50%, 
+    rgba(236, 72, 153, 0.3) 75%, 
+    rgba(253, 242, 248, 0.9) 100%
+  );
+}
+
+.theme-blue .yalla-gradient {
+  background: linear-gradient(135deg, 
+    rgba(248, 250, 252, 0.9) 0%, 
+    rgba(59, 130, 246, 0.2) 25%, 
+    rgba(93, 197, 253, 0.4) 50%, 
+    rgba(59, 130, 246, 0.3) 75%, 
+    rgba(248, 250, 252, 0.9) 100%
+  );
+}
+
+/* Additional shimmer effect for header */
+.theme-gradient-header::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-size: 500% 500%;
+  animation: slow-gradient-movement 15s ease-in-out infinite;
+  z-index: 1;
+}
+
+/* Shimmer layer for enhanced color mixing */
+.shimmer-layer {
+  position: absolute;
+  inset: 0;
+  background-size: 200% 200%;
+  animation: slow-gradient-movement 16s ease-in-out infinite;
+  z-index: 3;
+  mix-blend-mode: overlay;
+}
+
+.theme-red .shimmer-layer {
+  background: linear-gradient(
+    120deg,
+    transparent 0%,
+    rgba(117, 2, 15, 0.3) 20%,
+    rgba(255, 255, 255, 0.1) 40%,
+    rgba(43, 3, 7, 0.4) 60%,
+    rgba(117, 2, 15, 0.2) 80%,
+    transparent 100%
+  );
+}
+
+.theme-purple .shimmer-layer {
+  background: linear-gradient(
+    120deg,
+    transparent 0%,
+    rgba(96, 81, 155, 0.3) 20%,
+    rgba(255, 255, 255, 0.1) 40%,
+    rgba(49, 50, 62, 0.4) 60%,
+    rgba(191, 192, 209, 0.2) 80%,
+    transparent 100%
+  );
+}
+
+.theme-pink .shimmer-layer {
+  background: linear-gradient(
+    120deg,
+    transparent 0%,
+    rgba(236, 72, 153, 0.3) 20%,
+    rgba(255, 255, 255, 0.2) 40%,
+    rgba(249, 168, 212, 0.4) 60%,
+    rgba(252, 231, 243, 0.2) 80%,
+    transparent 100%
+  );
+}
+
+.theme-blue .shimmer-layer {
+  background: linear-gradient(
+    120deg,
+    transparent 0%,
+    rgba(59, 130, 246, 0.3) 20%,
+    rgba(255, 255, 255, 0.3) 40%,
+    rgba(147, 197, 253, 0.4) 60%,
+    rgba(219, 234, 254, 0.2) 80%,
+    transparent 100%
+  );
+}
+
+/* Enhanced color mixing keyframe */
+@keyframes color-wave-mixing {
+  0% {
+    background-position: 0% 0%, 100% 100%, 50% 50%;
+    transform: scale(1) rotate(0deg);
+  }
+  33% {
+    background-position: 100% 50%, 0% 50%, 25% 75%;
+    transform: scale(1.01) rotate(120deg);
+  }
+  66% {
+    background-position: 50% 100%, 50% 0%, 75% 25%;
+    transform: scale(1) rotate(240deg);
+  }
+  100% {
+    background-position: 0% 0%, 100% 100%, 50% 50%;
+    transform: scale(1) rotate(360deg);
+  }
+}
+
+/* Animated background gradients for layout */
+.theme-gradient-background {
+  position: relative;
+  overflow: hidden;
+}
+
+.theme-gradient-background::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-size: 400% 400%;
+  animation: slow-gradient-movement 18s ease-in-out infinite;
+  z-index: -2;
+}
+
+.theme-red .theme-gradient-background::before {
+  background: linear-gradient(
+    45deg,
+    #19171b 0%,
+    #75020f 15%,
+    #51080d 30%,
+    #2b0307 45%,
+    #19171b 60%,
+    #75020f 75%,
+    #51080d 90%,
+    #19171b 100%
+  );
+}
+
+.theme-purple .theme-gradient-background::before {
+  background: linear-gradient(
+    45deg,
+    #1e202c 0%,
+    #60519b 15%,
+    #31323e 30%,
+    #bfc0d1 45%,
+    #1e202c 60%,
+    #60519b 75%,
+    #31323e 90%,
+    #1e202c 100%
+  );
+}
+
+.theme-pink .theme-gradient-background::before {
+  background: linear-gradient(
+    45deg,
+    #fdf2f8 0%,
+    #ec4899 15%,
+    #f9a8d4 30%,
+    #fce7f3 45%,
+    #fdf2f8 60%,
+    #ec4899 75%,
+    #f9a8d4 90%,
+    #fdf2f8 100%
+  );
+}
+
+.theme-blue .theme-gradient-background::before {
+  background: linear-gradient(
+    45deg,
+    #f8fafc 0%,
+    #3b82f6 15%,
+    #93c5fd 30%,
+    #dbeafe 45%,
+    #f8fafc 60%,
+    #3b82f6 75%,
+    #93c5fd 90%,
+    #f8fafc 100%
+  );
+}
+
+.theme-gradient-background::after {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-size: 300% 300%;
+  animation: slow-gradient-movement 12s ease-in-out infinite reverse;
+  z-index: -1;
+  mix-blend-mode: overlay;
+  opacity: 0.4;
+}
+
+.theme-red .theme-gradient-background::after {
+  background: linear-gradient(
+    135deg,
+    rgba(117, 2, 15, 0.6) 0%,
+    transparent 30%,
+    rgba(43, 3, 7, 0.4) 50%,
+    transparent 70%,
+    rgba(81, 8, 13, 0.5) 100%
+  );
+}
+
+.theme-purple .theme-gradient-background::after {
+  background: linear-gradient(
+    135deg,
+    rgba(96, 81, 155, 0.6) 0%,
+    transparent 30%,
+    rgba(49, 50, 62, 0.4) 50%,
+    transparent 70%,
+    rgba(191, 192, 209, 0.3) 100%
+  );
+}
+
+.theme-pink .theme-gradient-background::after {
+  background: linear-gradient(
+    135deg,
+    rgba(236, 72, 153, 0.6) 0%,
+    transparent 30%,
+    rgba(249, 168, 212, 0.4) 50%,
+    transparent 70%,
+    rgba(252, 231, 243, 0.3) 100%
+  );
+}
+
+.theme-blue .theme-gradient-background::after {
+  background: linear-gradient(
+    135deg,
+    rgba(59, 130, 246, 0.6) 0%,
+    transparent 30%,
+    rgba(147, 197, 253, 0.4) 50%,
+    transparent 70%,
+    rgba(219, 234, 254, 0.3) 100%
+  );
+}
+
+/* Test visible animation to debug */
+.theme-gradient-background {
+  position: relative;
+  overflow: hidden;
+  animation: test-background-pulse 3s ease-in-out infinite !important;
+}
+
+@keyframes test-background-pulse {
+  0% {
+    filter: brightness(1);
+  }
+  50% {
+    filter: brightness(1.1);
+  }
+  100% {
+    filter: brightness(1);
+  }
+}
+
+/* Form animations and styles */
+.form-field-focus {
+  animation: form-field-glow 0.3s ease-out;
+}
+
+@keyframes form-field-glow {
+  0% {
+    box-shadow: 0 0 0 0 rgba(117, 2, 15, 0.7);
+  }
+  70% {
+    box-shadow: 0 0 0 10px rgba(117, 2, 15, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(117, 2, 15, 0);
+  }
+}
+
+.auth-form-container {
+  animation: auth-slide-up 0.6s ease-out;
+}
+
+@keyframes auth-slide-up {
+  0% {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.form-input {
+  transition: all 0.3s ease;
+}
+
+.form-input:focus {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+.social-button {
+  transition: all 0.3s ease;
+}
+
+.social-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+.auth-button {
+  position: relative;
+  overflow: hidden;
+}
+
+.auth-button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.5s;
+}
+
+.auth-button:hover::before {
+  left: 100%;
 }
