@@ -46,11 +46,21 @@ export default function Home() {
               Ready to plan your next amazing outing?
             </p>
             <div className="mt-4 flex flex-col sm:flex-row gap-4 justify-center">
-              <button
-                className={`px-6 py-3 rounded-lg font-semibold text-white transition-all duration-300 transform hover:scale-105`}
+              <Link
+                href="/group-room"
+                className={`px-6 py-3 rounded-lg font-semibold text-white transition-all duration-300 transform hover:scale-105 text-center`}
                 style={{
                   background: `linear-gradient(135deg, ${theme.colors.primary}, ${theme.colors.secondary})`,
                   boxShadow: `0 4px 15px ${theme.colors.primary}40`,
+                }}
+              >
+                Join Group Room 🎉
+              </Link>
+              <button
+                className={`px-6 py-3 rounded-lg font-semibold text-white transition-all duration-300 transform hover:scale-105`}
+                style={{
+                  background: `linear-gradient(135deg, ${theme.colors.secondary}, ${theme.colors.primary})`,
+                  boxShadow: `0 4px 15px ${theme.colors.secondary}40`,
                 }}
               >
                 Plan New Outing
