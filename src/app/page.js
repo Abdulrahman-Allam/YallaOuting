@@ -12,20 +12,20 @@ export default function Home() {
   return (
     <div className={`min-h-screen flex items-center justify-center p-8 relative overflow-hidden theme-${currentTheme}`}>
       {/* Dynamic Animated Background */}
-      <div 
+      <div
         className="absolute inset-0 opacity-80"
         style={{
           background: `linear-gradient(135deg, ${theme.colors.background} 0%, ${theme.colors.primary}20 50%, ${theme.colors.secondary}30 100%)`,
         }}
       ></div>
-      
+
       {/* Animated overlay */}
       <div className="yalla-gradient absolute inset-0"></div>
-      
+
       <main className="relative z-10 text-center max-w-4xl mx-auto">
         {/* Welcome Message for Logged In Users */}
         {isAuthenticated && user && (
-          <div 
+          <div
             className="mb-8 p-6 rounded-2xl backdrop-blur-sm border-2"
             style={{
               backgroundColor: `${theme.colors.primary}20`,
@@ -33,13 +33,13 @@ export default function Home() {
               boxShadow: `0 8px 32px ${theme.colors.primary}30`,
             }}
           >
-            <h2 
+            <h2
               className="text-2xl md:text-3xl font-bold mb-2"
               style={{ color: theme.colors.text }}
             >
               Welcome back, {user.firstName || user.username}! 🎉
             </h2>
-            <p 
+            <p
               className="text-lg"
               style={{ color: theme.colors.textSecondary }}
             >
@@ -81,27 +81,27 @@ export default function Home() {
         )}
 
         <div className="mb-12">
-          <h1 
+          <h1
             className="text-6xl md:text-8xl font-bold mb-8 animate-fade-in"
             style={{ color: theme.colors.text }}
           >
             YallaOuting
           </h1>
-          <p 
+          <p
             className="text-2xl md:text-3xl mb-4 animate-slide-up"
             style={{ color: theme.colors.text, opacity: 0.9 }}
           >
             Your Ultimate Friend Group Hangout Planner
           </p>
-          <p 
+          <p
             className="text-xl mb-12 max-w-2xl mx-auto leading-relaxed animate-fade-in-up"
             style={{ color: theme.colors.text, opacity: 0.8 }}
           >
-            Coordinate schedules, plan amazing activities, and create unforgettable memories 
+            Coordinate schedules, plan amazing activities, and create unforgettable memories
             with your friends. Making group hangouts effortless and fun!
           </p>
         </div>
-        
+
         {/* Show login/signup buttons only if not authenticated */}
         {!isAuthenticated && (
           <div className="flex flex-col sm:flex-row gap-6 justify-center mb-16 animate-fade-in-up">
@@ -110,7 +110,7 @@ export default function Home() {
               className={`group relative bg-gradient-to-r ${theme.gradients.button} text-white px-12 py-4 rounded-full font-bold text-lg shadow-xl transform hover:scale-105 transition-all duration-300 overflow-hidden`}
             >
               <span className="relative z-10">Get Started</span>
-              <div 
+              <div
                 className={`absolute inset-0 bg-gradient-to-r ${theme.gradients.card} opacity-0 group-hover:opacity-100 transition-opacity duration-300`}
               ></div>
             </Link>
@@ -134,7 +134,7 @@ export default function Home() {
             </Link>
           </div>
         )}
-        
+
         <div className="flex flex-col sm:flex-row gap-4 justify-center mb-8 animate-fade-in-up">
           <Link
             href="/about"
@@ -144,9 +144,9 @@ export default function Home() {
             Learn About Us
           </Link>
         </div>
-        
+
         <div className="grid md:grid-cols-3 gap-8 mt-16">
-          <div 
+          <div
             className="group rounded-2xl p-8 text-center transform hover:scale-105 transition-all duration-300 border backdrop-blur-sm"
             style={{
               backgroundColor: `${theme.colors.secondary}50`,
@@ -154,7 +154,7 @@ export default function Home() {
             }}
           >
             <div className="text-4xl mb-4">📅</div>
-            <h3 
+            <h3
               className="text-xl font-bold mb-3"
               style={{ color: theme.colors.text }}
             >
@@ -164,7 +164,7 @@ export default function Home() {
               Find the perfect time for everyone with our intelligent scheduling system
             </p>
           </div>
-          <div 
+          <div
             className="group rounded-2xl p-8 text-center transform hover:scale-105 transition-all duration-300 border backdrop-blur-sm"
             style={{
               backgroundColor: `${theme.colors.secondary}50`,
@@ -172,7 +172,7 @@ export default function Home() {
             }}
           >
             <div className="text-4xl mb-4">👥</div>
-            <h3 
+            <h3
               className="text-xl font-bold mb-3"
               style={{ color: theme.colors.text }}
             >
@@ -182,7 +182,7 @@ export default function Home() {
               Easily manage your friend groups and keep everyone connected
             </p>
           </div>
-          <div 
+          <div
             className="group rounded-2xl p-8 text-center transform hover:scale-105 transition-all duration-300 border backdrop-blur-sm"
             style={{
               backgroundColor: `${theme.colors.secondary}50`,
@@ -190,7 +190,7 @@ export default function Home() {
             }}
           >
             <div className="text-4xl mb-4">🎯</div>
-            <h3 
+            <h3
               className="text-xl font-bold mb-3"
               style={{ color: theme.colors.text }}
             >
